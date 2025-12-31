@@ -1029,6 +1029,21 @@ p {
   .hero {
     grid-template-columns: 1fr;
   }
+
+  .video-grid,
+  .video-grid-wide,
+  .feature-grid,
+  .projects-grid,
+  .stats,
+  .case-meta,
+  .case-grid,
+  .two-col,
+  .visual-grid,
+  .feature-visual-grid,
+  .stat-strip,
+  .color-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1060,6 +1075,11 @@ p {
 
   .chat-form {
     flex-direction: column;
+  }
+
+  .video-grid,
+  .video-grid-wide {
+    grid-template-columns: 1fr;
   }
 }
 
