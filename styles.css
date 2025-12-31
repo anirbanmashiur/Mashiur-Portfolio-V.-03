@@ -26,6 +26,7 @@ body {
   background: radial-gradient(circle at 10% 10%, #f7efe4 0%, #f6f0e8 45%, #efe2d4 100%);
   line-height: 1.65;
   font-size: 1rem;
+  overflow-x: hidden;
 }
 
 
