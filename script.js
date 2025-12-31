@@ -304,7 +304,7 @@ if (mediaGrid) {
   renderMedia(mediaLibrary.slice(0, 4), "Highlighted visuals from recent work.");
 }
 
-const revealTargets = document.querySelectorAll(".chat-card, .media-panel, .feature-card, .project-card, .case-card, .contact-card, .video-card, .locked-card, .section-title, .page-hero");
+const revealTargets = document.querySelectorAll(".chat-card, .media-panel, .media-card, .feature-card, .feature-card-wide, .project-card, .case-card, .contact-card, .video-card, .locked-card, .booking-panel, .booking-card, .booking-slots, .section-title, .page-hero");
 
 if ("IntersectionObserver" in window) {
   revealTargets.forEach((item) => item.classList.add("reveal"));
@@ -318,7 +318,7 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.1, rootMargin: "0px 0px -15% 0px" }
   );
 
   revealTargets.forEach((item) => observer.observe(item));

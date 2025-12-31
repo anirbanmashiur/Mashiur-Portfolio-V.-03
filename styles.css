@@ -1,4 +1,6 @@
-﻿:root {
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root {
   --bg: #f6f0e8;
   --ink: #2e2721;
   --muted: #6d5f54;
@@ -7,8 +9,10 @@
   --card: #ffffff;
   --shadow: 0 18px 40px rgba(40, 30, 20, 0.15);
   --radius: 20px;
+  --font-h1: "Gloock", "Times New Roman", serif;
+  --font-heading: "Gloock", "Times New Roman", serif;
   --font-display: "Satoshi", "Mulish", "SF Pro Display", "Helvetica Neue", "Arial", sans-serif;
-  --font-body: "Satoshi", "Mulish", "SF Pro Text", "Helvetica Neue", "Arial", sans-serif;
+  --font-body: "Plus Jakarta Sans", "Satoshi", "Mulish", "SF Pro Text", "Helvetica Neue", "Arial", sans-serif;
 }
 
 * {
@@ -21,7 +25,23 @@ body {
   color: var(--ink);
   background: radial-gradient(circle at 10% 10%, #f7efe4 0%, #f6f0e8 45%, #efe2d4 100%);
   line-height: 1.65;
-  font-size: 1.05rem;
+  font-size: 1rem;
+}
+
+
+
+h1 {
+  font-family: var(--font-h1);
+  letter-spacing: 0.07em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.07em;
 }
 
 img {
@@ -136,7 +156,7 @@ a {
 }
 
 .hero-copy h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-h1);
   font-size: clamp(2.7rem, 3.5vw, 4rem);
   line-height: 1.1;
   margin-bottom: 16px;
@@ -153,11 +173,13 @@ a {
   font-size: 0.8rem;
   color: var(--muted);
   font-weight: 700;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
   margin: 0 0 12px;
 }
 
 .lead {
-  font-size: 1.15rem;
+  font-family: "Plus Jakarta Sans", "Satoshi", "Mulish", "SF Pro Text", "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.5rem;
   color: var(--muted);
 }
 
@@ -176,7 +198,7 @@ a {
 
 .hero-highlights h3 {
   margin: 0 0 6px;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
 }
 
 .btn {
@@ -188,15 +210,16 @@ a {
   background: var(--ink);
   color: #fff;
   font-weight: 600;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
   border: none;
   cursor: pointer;
   transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
 }
 
 .btn-ghost {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid rgba(60, 40, 30, 0.2);
+  background: var(--ink);
+  color: #fff;
+  border: none;
 }
 
 .btn:hover {
@@ -231,35 +254,80 @@ a {
 .project-card,
 .case-card,
 .contact-card {
-  background: var(--card);
+  background: transparent;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
+  box-shadow: none;
+  padding: 24px;
+  border: 1px solid rgba(60, 40, 30, 0.15);
 }
 
 .chat-card,
 .media-panel,
+.media-card,
 .feature-card,
+.feature-card-wide,
 .project-card,
 .case-card,
 .contact-card,
 .video-card,
-.locked-card {
-  transition: transform 280ms ease, box-shadow 280ms ease;
+.locked-card,
+.booking-card,
+.booking-slots {
+  position: relative;
+  transition: transform 600ms ease;
   will-change: transform;
-  animation: card-fade 700ms ease both;
 }
 
 .chat-card:hover,
 .media-panel:hover,
+.media-card:hover,
 .feature-card:hover,
+.feature-card-wide:hover,
 .project-card:hover,
 .case-card:hover,
 .contact-card:hover,
 .video-card:hover,
-.locked-card:hover {
-  transform: translateY(-6px);
+.locked-card:hover,
+.booking-card:hover,
+.booking-slots:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.chat-card::before,
+.media-panel::before,
+.media-card::before,
+.feature-card::before,
+.feature-card-wide::before,
+.project-card::before,
+.case-card::before,
+.contact-card::before,
+.video-card::before,
+.locked-card::before,
+.booking-card::before,
+.booking-slots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   box-shadow: 0 24px 50px rgba(40, 30, 20, 0.18);
+  opacity: 0;
+  transition: opacity 900ms ease 200ms;
+  z-index: -1;
+}
+
+.chat-card:hover::before,
+.media-panel:hover::before,
+.media-card:hover::before,
+.feature-card:hover::before,
+.feature-card-wide:hover::before,
+.project-card:hover::before,
+.case-card:hover::before,
+.contact-card:hover::before,
+.video-card:hover::before,
+.locked-card:hover::before,
+.booking-card:hover::before,
+.booking-slots:hover::before {
+  opacity: 1;
 }
 
 .project-card .media-frame img,
@@ -411,7 +479,7 @@ a {
 }
 
 .media-video::before {
-  content: "▶";
+  content: "?";
   position: absolute;
   top: 12px;
   right: 12px;
@@ -440,7 +508,7 @@ a {
 }
 
 .section-title h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   margin: 0 0 12px;
 }
 
@@ -530,9 +598,10 @@ a {
 }
 
 .video-card {
-  background: var(--card);
+  background: transparent;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: none;
+  border: 1px solid rgba(60, 40, 30, 0.15);
   padding: 18px;
 }
 
@@ -587,6 +656,10 @@ a {
   gap: 10px;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 .card-meta {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -624,6 +697,7 @@ a {
   border-top: 1px solid rgba(60, 40, 30, 0.08);
   padding: 30px 0 40px;
   margin-top: 40px;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
 }
 
 .footer-inner {
@@ -680,14 +754,12 @@ a {
 
 .case-cover-content h1 {
   margin: 0 0 8px;
-  font-family: var(--font-display);
+  font-family: var(--font-h1);
   font-size: clamp(2rem, 3vw, 3rem);
 }
 
 .case-cover-content p {
-  margin: 0;
-  max-width: 720px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
 }
 
 .case-meta {
@@ -730,7 +802,7 @@ a {
 
 .visual-text h2 {
   margin-top: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
 }
 
 .visual-band {
@@ -877,16 +949,17 @@ a {
 }
 
 .locked-card {
-  background: var(--card);
+  background: transparent;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: none;
+  border: 1px solid rgba(60, 40, 30, 0.15);
   padding: 32px;
   text-align: center;
 }
 
 .locked-card h2 {
   margin-top: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
 }
 
 .projects-grid > *,
@@ -922,8 +995,8 @@ a {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 600ms ease, transform 600ms ease;
+  transform: translateY(28px);
+  transition: opacity 1200ms cubic-bezier(0.22, 1, 0.36, 1), transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
@@ -986,5 +1059,139 @@ a {
 
   .chat-form {
     flex-direction: column;
+  }
+}
+
+
+
+
+
+
+.booking {
+  display: grid;
+  gap: 24px;
+}
+
+.booking-embed {
+  background: transparent;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+}
+
+.booking-embed .calendly-inline-widget {
+  min-width: 320px;
+  height: 720px;
+}
+
+.booking {
+  display: grid;
+  gap: 24px;
+}
+
+.booking-panel {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.booking-card,
+.booking-slots {
+  border: 1px solid rgba(60, 40, 30, 0.15);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: transparent;
+}
+
+.booking-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.booking-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(60, 40, 30, 0.12);
+}
+
+.booking-name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.booking-title {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.booking-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.booking-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.booking-meta i {
+  margin-right: 8px;
+}
+
+.booking-slots-header {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.booking-slots-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.booking-slots-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.slot-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(60, 40, 30, 0.18);
+  font-weight: 600;
+  color: var(--ink);
+  background: rgba(246, 240, 232, 0.4);
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+}
+
+.slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(40, 30, 20, 0.12);
+  background: rgba(246, 240, 232, 0.75);
+}
+
+@media (max-width: 900px) {
+  .booking-panel {
+    grid-template-columns: 1fr;
   }
 }
